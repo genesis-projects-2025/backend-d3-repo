@@ -17,7 +17,7 @@ async function finalMessage(to, name) {
         to: to,
         type: "template",
         template: {
-          name: "account_creation_confirmation_3",
+          name: "account_creation_confirmation_5",
           language: { code: "en_US" },
           components: [
             {
@@ -25,7 +25,7 @@ async function finalMessage(to, name) {
               parameters: [
                 {
                   type: "text",
-                  text: name // {{1}} in body
+                  text: name        // {{1}} in body → "John"
                 }
               ]
             },
@@ -36,7 +36,7 @@ async function finalMessage(to, name) {
               parameters: [
                 {
                   type: "text",
-                  text: to // this replaces {{1}} in URL
+                  text: to          // {{1}} in URL → /dashboard/{phone}
                 }
               ]
             }
