@@ -3,7 +3,7 @@ const axios = require('axios');
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID_1;
 const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN;
 
-async function finalMessage(to, name, score) {
+async function d3CampaignMessage(to, name, score, riskLevel) {
   try {
     const response = await axios({
       method: "post",
@@ -17,7 +17,7 @@ async function finalMessage(to, name, score) {
         to: to,
         type: "template",
         template: {
-          name: "account_creation_confirmation_5",
+          name: "d3_campaign",
           language: { code: "en_US" },
           components: [
             {
@@ -25,22 +25,15 @@ async function finalMessage(to, name, score) {
               parameters: [
                 {
                   type: "text",
-                  text: name        // {{1}} in body
+                  text: name        // {{1}} → name
                 },
                 {
                   type: "text",
-                  text: score.toString() // {{2}} in body
-                }
-              ]
-            },
-            {
-              type: "button",
-              sub_type: "url",
-              index: "0",
-              parameters: [
+                  text: String(score)      // {{2}} → score
+                },
                 {
                   type: "text",
-                  text: to          // {{1}} in URL → /dashboard/{phone}
+                  text: riskLevel   // {{3}} → risk level
                 }
               ]
             }
@@ -59,4 +52,4 @@ async function finalMessage(to, name, score) {
   }
 }
 
-module.exports = finalMessage;
+module.exports = d3CampaignMessage;
