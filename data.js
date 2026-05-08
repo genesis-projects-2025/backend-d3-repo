@@ -62,6 +62,7 @@ try {
       database: dbUrl.pathname.replace("/", ""),
       waitForConnections: true,
       connectionLimit: Number(process.env.DB_CONNECTION_LIMIT || 50),
+      timezone: '+05:30',
       ssl: sslOptions,
     });
   } else {
@@ -73,6 +74,7 @@ try {
       database: process.env.DB_NAME || "material_request_promotion",
       waitForConnections: true,
       connectionLimit: Number(process.env.DB_CONNECTION_LIMIT || 50),
+       timezone: '+05:30',
       ssl: sslOptions,
     });
   }
