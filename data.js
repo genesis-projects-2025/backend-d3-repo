@@ -8,7 +8,7 @@ const path = require("path");
 const fs = require("fs");
 const finalMessage = require('./templates/finalMessage');
 const d3result=require('./templates/d3result')
-app.use(cors());
+
 
 // ---------- CORS ----------
 const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || 'http://localhost:3001' ;
