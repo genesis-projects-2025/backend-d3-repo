@@ -148,7 +148,17 @@ app.post('/send-final-message', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
+app.get('/d3-campaign-data', async (req, res) => {
+    try {
+        const [rows] = await pool.query(
+            `SELECT * FROM d3_campaign ORDER BY created_at DESC`
+        );
+        res.json(rows);
+    } catch (err) {
+        console.error("❌ Error fetching d3_campaign data:", err);
+        res.status(500).json({ error: "Database error" });
+    }
+});
 app.listen(process.env.PORT, () => {
     console.log(`🚀 Server is running on port ${process.env.PORT}`);
 });
