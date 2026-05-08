@@ -17,7 +17,7 @@ async function d3CampaignMessage(to, name, score, riskLevel) {
         to: to,
         type: "template",
         template: {
-          name: "d3_campaign",
+          name: "d3_campaign_1",
           language: { code: "en_US" },
           components: [
             {
