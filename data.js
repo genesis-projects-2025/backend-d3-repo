@@ -130,8 +130,7 @@ app.post('/send-final-message', async (req, res) => {
 
         // Send WhatsApp message & save to DB in parallel
         const [result] = await Promise.all([
-            // d3result(to, name, score, finalRiskLevel),
-          finalMessage(to, name),
+            d3result(to, name, score, finalRiskLevel),
             pool.query(
                 `INSERT INTO d3_campaign (phone_number, name, risk_level, total_score) 
                  VALUES (?, ?, ?, ?)`,
