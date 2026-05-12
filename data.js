@@ -155,8 +155,12 @@ app.get('/d3-campaign-data', async (req, res) => {
     try {
         const [rows] = await pool.query(`
     SELECT 
-        ROW_NUMBER() OVER (ORDER BY id) AS row_num,
-        d3_campaign.*
+        ROW_NUMBER() OVER (ORDER BY id) AS id,
+        phone_number,
+        name,
+        risk_level,
+        total_score,
+        created_at
     FROM d3_campaign
     ORDER BY id
 `);
