@@ -124,7 +124,7 @@ app.post('/send-final-message', async (req, res) => {
         }
 
         // Calculate riskLevel if not provided
-        const finalRiskLevel = riskLevel || (score < 5 ? "Adequate" : "Inadequate");
+        const finalRiskLevel = riskLevel || (score < 5 ? "Your Vitamin D levels are sufficient" : "You are at risk of Vitamin D deficiency");
 
         console.log(`📤 Sending final message to: ${to}, name: ${name}, score: ${score}, riskLevel: ${finalRiskLevel}`);
 
