@@ -153,9 +153,13 @@ app.post('/send-final-message', async (req, res) => {
 
 app.get('/d3-campaign-data', async (req, res) => {
     try {
-        const [rows] = await pool.query(
-            `SELECT * FROM d3_campaign ORDER BY id`
-        );
+        const [rows] = await pool.query(`
+    SELECT 
+        ROW_NUMBER() OVER (ORDER BY id) AS row_num,
+        d3_campaign.*
+    FROM d3_campaign
+    ORDER BY id
+`);
         res.json(rows);
     } catch (err) {
         console.error("❌ Error fetching d3_campaign data:", err);
